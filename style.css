@@ -1,0 +1,202 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+.navbar-nav .nav-link {
+  font-size: 1.2rem;
+  transition: all 0.6s;
+  opacity: 1;
+}
+.navbar-nav .nav-link:hover {
+  opacity: 0.5;
+}
+
+.main-header {
+  background: url(./loginbg.png);
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+@media (min-width: 768px) {
+}
+.main-header .btn {
+  text-shadow: none;
+}
+.main-header .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+.main-header * {
+  z-index: 1;
+}
+#features i {
+  background-color: #333;
+  font-size: 3rem;
+  padding: 1rem;
+  color: #fff;
+}
+
+#main-footer .footer-content {
+  height: 100%;
+}
+
+#main-footer .footer-content p {
+  margin: 0px !important;
+}
+#main-footer .footer-content .social a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
+  transition: all 0.6s;
+  margin-left: 0.5rem;
+}
+#main-footer .footer-content .social a:hover {
+  opacity: 0.7;
+}
+
+/* login  */
+
+.login-register_header {
+  background: url(./loginbg.png);
+
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+.login-register_header #login-form,
+.login-register_header #register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.login-register_header #login-form .form-bg,
+.login-register_header #register-form .form-bg {
+  border-radius: 5px;
+  padding: 5rem;
+  justify-self: center;
+}
+
+/* chat */
+
+.chat_main .navbar,
+.account_main .navbar {
+  background-color: #cbdceb;
+  color: #333 !important;
+}
+
+.chat_main .dropdown-menu {
+  background-color: #cbdceb;
+  border: none;
+}
+.chat_main .dropdown-menu .dropdown-item:hover {
+  background-color: #cbdceb;
+  cursor: pointer;
+}
+#friendlist-collapse_btn {
+  background-color: #cbdceb;
+  border: #cbdceb;
+}
+.online-dot {
+  background-color: green;
+}
+
+.offline-dot {
+  background-color: gray;
+}
+
+.chats,
+.chat-container {
+  height: calc(100vh - 120px);
+}
+.profile-img {
+  height: 75px;
+  max-width: 100%;
+  object-fit: cover;
+  width: auto;
+}
+
+.chat_list {
+  list-style: none;
+  max-height: 90%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+}
+.chat_list .chat_item {
+  margin-bottom: 0.7rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.6rem;
+  max-width: 70%;
+  min-width: 40%;
+  background-color: #a6aebf;
+  transition: 0.5s;
+}
+.chat_list .chat_item:not(.me) .message-time {
+  text-align: end;
+}
+.chat_list .chat_item.me {
+  background-color: #cbdceb;
+  margin-left: auto;
+}
+.message_input button {
+  cursor: pointer;
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #333;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  padding: 0.5rem;
+  background-color: #cbdceb;
+}
+.message_input i {
+  font-size: 1.5rem;
+}
+.chat-img {
+  width: 50px;
+  height: 50px;
+}
+.chat-img_text {
+  text-align: start;
+}
+.chat-item .dropdown .btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  border: none;
+}
+
+@media (min-width: 768px) {
+  .login-register_header #login-form .form-bg,
+  .login-register_header #register-form .form-bg {
+    width: 60%;
+  }
+  .main-header,
+  .login-register_header {
+    background-attachment: fixed;
+  }
+  .chat_list {
+    height: calc(100vh - 120px);
+  }
+}

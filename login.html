@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="login-register_header">
+      <div class="navbar navbar-expand" data-bs-theme="dark">
+        <div class="container">
+          <a href="index.html" class="navbar-brand">MessageBox</a>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Giriş/Kayıt
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="login.html">Giriş Yap</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="register.html">Kayıt Ol</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <form action="" id="login-form">
+        <div class="container">
+          <div class="form-bg">
+            <h1 class="mb-3">Giriş Yap</h1>
+            <input
+              type="email"
+              placeholder="Email"
+              id="loginEmail"
+              class="form-control mt-3"
+            />
+            <input
+              id="loginPassword"
+              type="password"
+              class="form-control mt-3"
+              placeholder="password"
+            />
+            <button class="btn btn-outline-light mt-3">Giriş</button>
+          </div>
+        </div>
+      </form>
+    </header>
+
+    <footer id="main-footer" class="mt-auto bg-light" data-bs-theme="light">
+      <div
+        class="footer-content container d-md-flex text-center justify-content-between align-items-center p-3 h-100"
+      >
+        <p>Copyright &copy; 2025. All Rights Reserved.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/umutcancezars" target="_blank"
+            ><i class="bi bi-instagram"></i
+          ></a>
+          <a
+            href="https://x.com/Umutcan_cezars?t=K1AmvynFGC64zZ20M-vjLg&s=09"
+            target="_blank"
+            ><i class="bi bi-twitter-x"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/umutcan-cezar-b553042aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            target="_blank"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./loginScript.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

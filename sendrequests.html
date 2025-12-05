@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="addFriend.css" />
+    <title>Document</title>
+  </head>
+
+  <body class="h-100 d-flex flex-column">
+    <!-- NAVBAR -->
+    <header class="chat_main">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <!-- Logo -->
+          <a href="index.html" class="navbar-brand">MessageBox</a>
+
+          <!-- Hamburger button (mobilde gözükecek) -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Navbar öğeleri -->
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a href="addFriend.html" class="nav-link">Arkadaş Ekle</a>
+              </li>
+              <li class="nav-item">
+                <a href="incomingRequests.html" class="nav-link"
+                  >Gelen İstekler</a
+                >
+              </li>
+              <li class="nav-item">
+                <a href="chat.html" class="nav-link">Sohbet</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  id="nav-dropdown"
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Ayarlar/Çıkış
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="account.html">Ayarlar</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" id="dropdown-exit">Çıkış</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container my-1">
+      <input
+        type="text"
+        id="searchInput"
+        class="form-control my-3"
+        placeholder="Kullanıcı adı ile ara..."
+      />
+
+      <div id="incomingrequests">Yükleniyor...</div>
+    </div>
+    <!-- FOOTER -->
+    <footer
+      id="main-footer"
+      class="mt-auto bg-light form-control"
+      data-bs-theme="light"
+    >
+      <div
+        class="footer-content container d-md-flex text-center justify-content-between align-items-center p-3 h-100"
+      >
+        <p>Copyright &copy; 2025. All Rights Reserved.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/umutcancezars" target="_blank"
+            ><i class="bi bi-instagram"></i
+          ></a>
+          <a href="https://x.com/Umutcan_cezars" target="_blank"
+            ><i class="bi bi-twitter-x"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/umutcan-cezar" target="_blank"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.0/signalr.min.js"></script>
+    <script src="sendrequests.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

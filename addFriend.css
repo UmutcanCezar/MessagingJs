@@ -1,0 +1,43 @@
+#notFriendsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  gap: 12px;
+}
+
+.user-item .pp {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.add-btn {
+  margin-left: auto;
+  padding: 6px 14px;
+  background: #cbdceb;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.6;
+}
+
+.add-btn:hover {
+  opacity: 0.8;
+}
+
+.add-btn:disabled {
+  background: gray;
+  cursor: default;
+}

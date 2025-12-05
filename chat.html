@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+
+  <body class="h-100 d-flex flex-column">
+    <!-- NAVBAR -->
+    <header class="chat_main">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <!-- Logo -->
+          <a href="index.html" class="navbar-brand">MessageBox</a>
+
+          <!-- Hamburger button (mobilde gözükecek) -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Navbar öğeleri -->
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a href="addFriend.html" class="nav-link">Arkadaş Ekle</a>
+              </li>
+              <li class="nav-item">
+                <a href="incomingRequests.html" class="nav-link"
+                  >Gelen İstekler</a
+                >
+              </li>
+              <li class="nav-item">
+                <a href="chat.html" class="nav-link">Sohbet</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  id="nav-dropdown"
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Ayarlar/Çıkış
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="account.html">Ayarlar</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" id="dropdown-exit">Çıkış</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="row py-3 g-3">
+        <div id="error-box" class="alert alert-danger d-none"></div>
+
+        <!-- SOL LİSTE (Arkadaş Listesi) -->
+        <div class="col-lg-4 col-12 mb-3 mb-lg-0">
+          <div class="d-flex flex-column h-100">
+            <button
+              id="friendlist-collapse_btn"
+              class="btn btn-primary d-lg-none mb-2"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#friendList"
+              aria-expanded="false"
+              aria-controls="friendList"
+            >
+              Arkadaş Listesi
+            </button>
+            <div class="collapse d-lg-block h-100" id="friendList">
+              <ul class="list-group list-group-flush overflow-auto chats"></ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAĞ CHAT -->
+        <div class="col-lg-8 col-12 d-flex flex-column chat-container p-0">
+          <!-- ÜST BAŞLIK -->
+          <div class="chat-header p-3 border-bottom border-3 mb-1">
+            <div class="d-flex align-items-center">
+              <!-- Profil Fotoğrafı -->
+              <div class="flex-shrink-0">
+                <img
+                  src="./profilphoto.png"
+                  class="chat-img rounded-circle"
+                  alt="Profil Fotoğrafı"
+                />
+              </div>
+              <!-- Kullanıcı İsmi / Başlık -->
+              <div class="flex-grow-1 ms-3">
+                <h5 class="chat-img_text mb-0">Kullanıcı İsmi</h5>
+              </div>
+            </div>
+          </div>
+
+          <!-- MESAJ LİSTESİ -->
+          <ul class="chat_list px-3 py-2 flex-grow-1 overflow-auto h-100"></ul>
+
+          <!-- MESAJ GÖNDERME ALANI -->
+          <div class="d-flex message_input p-3">
+            <input
+              type="text"
+              id="messageText"
+              class="form-control"
+              placeholder="Mesajınızı yazın..."
+            />
+            <button class="btn btn-primary ms-2" id="messageSendButton">
+              <i class="bi bi-send"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <footer id="main-footer" class="mt-auto bg-light" data-bs-theme="light">
+      <div
+        class="footer-content container d-md-flex text-center justify-content-between align-items-center p-3 h-100"
+      >
+        <p>Copyright &copy; 2025. All Rights Reserved.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/umutcancezars" target="_blank"
+            ><i class="bi bi-instagram"></i
+          ></a>
+          <a href="https://x.com/Umutcan_cezars" target="_blank"
+            ><i class="bi bi-twitter-x"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/umutcan-cezar" target="_blank"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.0/signalr.min.js"></script>
+    <script src="chat.js"></script>
+    <script src="navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
