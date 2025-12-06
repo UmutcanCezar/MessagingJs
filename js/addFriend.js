@@ -40,7 +40,7 @@ if (!user) {
       const div = document.createElement("div");
       div.className = "user-item";
       div.innerHTML = `
-    <img src="${u.profilePictureUrl || "/assets/profilphoto.png"}" alt="${
+    <img src="${u.profilePictureUrl || "./assets/profilphoto.png"}" alt="${
         u.username
       }" class="pp" />
       <div>
