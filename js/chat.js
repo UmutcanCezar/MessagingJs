@@ -96,7 +96,7 @@ if (!user) {
           <div class="row">
             <div class="col-5 text-center position-relative">
               <img src="${
-                friend.profilePictureUrl || "./assets/profilphoto.png"
+                friend.profilePictureUrl || "/assets/profilphoto.png"
               }" class="profile-img" />
               <span class="${statusClass} position-absolute bottom-0 end-0 small" style="background:white; border-radius:50%; padding:2px 5px;">
                 ●
