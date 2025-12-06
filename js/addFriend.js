@@ -1,4 +1,6 @@
 const user = JSON.parse(localStorage.getItem("user"));
+const container = document.querySelector("#notFriendsList");
+
 if (!user) {
   alert("Bu sayfaya erişmek için giriş yapmalısınız.");
   window.location.href = "index.html";
@@ -6,8 +8,6 @@ if (!user) {
   let allUsers = [];
 
   async function loadNotFriends() {
-    const container = document.querySelector("#notFriendsList");
-    container.innerHTML = "Yükleniyor..";
     try {
       const response = await fetch(
         `https://chatapp-api-5smg.onrender.com/api/friend/notfriends/${user.id}`
@@ -23,10 +23,8 @@ if (!user) {
       }
 
       allUsers = await response.json();
-      renderUsers(allUsers);
     } catch (err) {
       container.innerHTML = "";
-      console.log(err);
       container.insertAdjacentHTML(
         "afterbegin",
         `<div class="alert alert-info">
@@ -37,22 +35,12 @@ if (!user) {
   }
 
   function renderUsers(users) {
-    const container = document.querySelector("#notFriendsList");
     container.innerHTML = "";
-    if (users.length == 0) {
-      container.insertAdjacentHTML(
-        "afterbegin",
-        `<div class="alert alert-info">
-      Eklenebilecek kullanıcı yok.
-      </div>`
-      );
-      return;
-    }
     for (let u of users) {
       const div = document.createElement("div");
       div.className = "user-item";
       div.innerHTML = `
-    <img src="${u.profilePictureUrl || "/profilphoto.png"}" alt="${
+    <img src="${u.profilePictureUrl || "../assets/profilphoto.png"}" alt="${
         u.username
       }" class="pp" />
       <div>
@@ -89,13 +77,22 @@ if (!user) {
   document.getElementById("searchInput").addEventListener("input", (e) => {
     const term = e.target.value.trim().toLowerCase();
     if (!term) {
-      renderUsers(allUsers);
+      renderUsers([]);
       return;
     }
     const filtered = allUsers.filter((u) =>
       u.username.toLowerCase().includes(term)
     );
-    renderUsers(filtered);
+    if (filtered.length > 0) renderUsers(filtered);
+    else {
+      renderUsers([]);
+      container.insertAdjacentHTML(
+        "afterbegin",
+        `<div class="alert alert-info">
+      Kullanıcı Bulunamadı.
+      </div>`
+      );
+    }
   });
 
   loadNotFriends();

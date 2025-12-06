@@ -26,8 +26,15 @@ register.addEventListener("submit", async (e) => {
       Boş Bırakılan Alanları Doldurunuz
    </div>`
     );
-  } else if (rPass.value != rPass2.value) {
-    register.insertAdjacentHTML(
+  } else if (rPass.trim().length < 6) {
+    registerbg.insertAdjacentHTML(
+      "afterbegin",
+      `<div class="alert alert-info">
+      Şifreniz en az 6 karakter olmalıdır.
+   </div>`
+    );
+  } else if (rPass !== rPass2) {
+    registerbg.insertAdjacentHTML(
       "afterbegin",
       `<div class="alert alert-info">
       Girdiğiniz Şifreler Birbirinden Farklı!
@@ -54,6 +61,25 @@ register.addEventListener("submit", async (e) => {
           </div>`
         );
         return;
+      } else {
+        register.reset();
+        registerbg.insertAdjacentHTML(
+          "afterbegin",
+          `
+  <div class="alert alert-info" id="successAlert">
+    Kaydınız başarıyla oluştu! <span id="countdown">5</span> saniye içinde yönlendirileceksiniz...
+  </div>
+  `
+        );
+        let timeleft = 5;
+        const interval = setInterval(() => {
+          timeleft--;
+          document.getElementById("countdown").textContent = timeleft;
+          if (timeleft === 0) {
+            clearInterval(interval);
+            window.location.href = "login.html";
+          }
+        }, 1000);
       }
     } catch (err) {
       registerbg.insertAdjacentHTML(

@@ -17,7 +17,7 @@ html {
 }
 
 .main-header {
-  background: url(./loginbg.png);
+  background: url(../assets/loginbg.png);
   height: 100vh;
   background-position: center;
   background-size: cover;
@@ -69,7 +69,7 @@ html {
 /* login  */
 
 .login-register_header {
-  background: url(./loginbg.png);
+  background: url(../assets/loginbg.png);
 
   height: 100vh;
   background-position: center;
@@ -147,6 +147,7 @@ html {
   border-radius: 0.6rem;
   max-width: 70%;
   min-width: 40%;
+
   background-color: #a6aebf;
   transition: 0.5s;
 }
@@ -186,6 +187,23 @@ html {
 :not(.btn-check) + .btn:active {
   border: none;
 }
+/* Chat mesajı responsive ayarları */
+.message-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  flex-wrap: nowrap; /* Yan yana kalmasını sağlar */
+  word-break: break-word; /* Uzun kelimeler taşmasın */
+}
+
+.message-content {
+  flex: 1 1 auto;
+  min-width: 0; /* Taşmayı önler */
+}
+
+.message-actions {
+  flex-shrink: 0; /* Dropdown küçülmesin */
+}
 
 @media (min-width: 768px) {
   .login-register_header #login-form .form-bg,
@@ -198,5 +216,11 @@ html {
   }
   .chat_list {
     height: calc(100vh - 120px);
+  }
+  .message-item {
+    gap: 0.3rem;
+  }
+  .message-actions i {
+    font-size: 1.2rem;
   }
 }

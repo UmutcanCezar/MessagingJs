@@ -64,11 +64,9 @@ if (!user) {
             { method: "POST" }
           );
           if (!res.ok) throw new Error("İstek kabul edilemedi.");
-          alert("İstek kabul edildi.");
           loadIncomingRequests(); // Listeyi tekrar yükle
         } catch (err) {
           console.error(err);
-          alert("İstek kabul edilemedi.");
         }
       });
 

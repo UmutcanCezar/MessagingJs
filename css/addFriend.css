@@ -14,7 +14,8 @@
   gap: 12px;
 }
 
-.user-item .pp {
+.user-item .pp,
+.request-item .pp {
   width: 45px;
   height: 45px;
   border-radius: 50%;

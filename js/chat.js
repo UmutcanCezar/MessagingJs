@@ -16,9 +16,11 @@ if (!user) {
   const chats = document.querySelector(".chats");
   const chatlist = document.querySelector(".chat_list");
   const messageText = document.querySelector("#messageText");
+  const messageSendBtn = document.querySelector("#messageSendButton");
   let messageSendFriend;
   const connection = new signalR.HubConnectionBuilder()
     .withUrl("https://chatapp-api-5smg.onrender.com/chathub?userId=" + user.id)
+    .configureLogging(signalR.LogLevel.None)
     .withAutomaticReconnect()
     .build();
 
@@ -32,6 +34,13 @@ if (!user) {
       } else {
         alert("Listeden Kişi Seçmelisiniz!");
       }
+    }
+  });
+
+  messageSendBtn.addEventListener("click", async (e) => {
+    if (messageSendFriend) {
+      await sendMessage(messageSendFriend, messageText.value);
+      messageText.value = "";
     }
   });
 
@@ -87,7 +96,7 @@ if (!user) {
           <div class="row">
             <div class="col-5 text-center position-relative">
               <img src="${
-                friend.profilePictureUrl || "./profilphoto.png"
+                friend.profilePictureUrl || "../assets/profilphoto.png"
               }" class="profile-img" />
               <span class="${statusClass} position-absolute bottom-0 end-0 small" style="background:white; border-radius:50%; padding:2px 5px;">
                 ●
@@ -118,12 +127,16 @@ if (!user) {
           document.querySelector(".chat-img_text").textContent =
             li.dataset.username;
           loadMessage(li.dataset.email);
+          document.querySelector(".chat-container").classList.remove("d-none");
+
+          const collapseElement = document.getElementById("friendList");
+          const bsCollapse = bootstrap.Collapse.getInstance(collapseElement);
+          if (bsCollapse) bsCollapse.hide();
         });
 
         chats.appendChild(li);
       }
     } catch (err) {
-      console.log(err);
       showError(
         "Arkadaş listesi yüklenirken bir hata oluştu. Sunucuya erişilemiyor."
       );
@@ -145,7 +158,6 @@ if (!user) {
       const messages = await response.json();
 
       for (let message of messages) {
-        console.log(user);
         const msgDate = new Date(message.sentAt);
         const dateTime = `${msgDate.toLocaleDateString()} ${msgDate.toLocaleTimeString(
           [],
@@ -154,8 +166,7 @@ if (!user) {
         const li = document.createElement("li");
         li.className =
           message.senderID === user.id ? "chat_item me" : "chat_item";
-        li.innerHTML = `
-        <div class="d-flex align-items-start mb-2">
+        li.innerHTML = `<div class="d-flex align-items-start mb-2">
   <!-- Mesaj İçeriği -->
   <div class="flex-grow-1 me-2">
     <p class="message mb-1">
@@ -182,7 +193,9 @@ if (!user) {
       </ul>
     </div>
   </div>
-</div>`;
+</div>
+
+`;
         chatlist.appendChild(li);
       }
 
@@ -207,30 +220,34 @@ if (!user) {
       const li = document.createElement("li");
       li.className = senderId === user.id ? "chat_item me" : "chat_item";
       li.innerHTML = `
-        <div class="row">
-                <div class="col-11">
-                  <p class="message">
-                    ${message}
-                  </p>
-                  <div class="message-time"><small>${dateTime}</small></div>
-                </div>
-                <div class="col-1">
-                  <div class="dropdown">
-                    <button
-                      class="btn p-0"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                    >
-                      <i class="bi bi-three-dots-vertical fs-4"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-start">
-                      <li><a class="dropdown-item" href="#">Düzenle</a></li>
-                      <li><a class="dropdown-item" href="#">Sil</a></li>
-                      <li><a class="dropdown-item" href="#">Paylaş</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>`;
+        <div class="d-flex align-items-start mb-2">
+  <!-- Mesaj İçeriği -->
+  <div class="flex-grow-1 me-2">
+    <p class="message mb-1">
+      ${message}
+    </p>
+    <div class="message-time"><small>${dateTime}</small></div>
+  </div>
+
+  <!-- İşlem Dropdown -->
+  <div class="flex-shrink-0">
+    <div class="dropdown">
+      <button
+        class="btn p-0"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="bi bi-three-dots-vertical fs-4"></i>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="#">Düzenle</a></li>
+        <li><a class="dropdown-item" href="#">Sil</a></li>
+        <li><a class="dropdown-item" href="#">Paylaş</a></li>
+      </ul>
+    </div>
+  </div>
+</div>`;
       chatlist.appendChild(li);
       chatlist.scrollTop = chatlist.scrollHeight;
     }
@@ -266,7 +283,6 @@ if (!user) {
   async function startConnection() {
     try {
       await connection.start();
-      console.log("SignalR bağlantısı kuruldu!");
     } catch (err) {
       console.error("Hub bağlantı hatası:", err);
       showError(
