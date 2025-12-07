@@ -38,11 +38,13 @@ if (!user) {
   });
 
   messageSendBtn.addEventListener("click", async (e) => {
-    if (messageSendFriend) {
+    e.preventDefault();
+    if (messageSendFriend && messageText.value.trim().length > 0) {
       await sendMessage(messageSendFriend, messageText.value);
       messageText.value = "";
     }
   });
+  messageSendBtn.addEventListener("mousedown", (e) => e.preventDefault());
 
   async function sendMessage(receiverId, content) {
     try {

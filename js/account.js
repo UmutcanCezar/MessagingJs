@@ -1,6 +1,5 @@
 const user = JSON.parse(localStorage.getItem("user"));
 if (!user) {
-  alert("Bu sayfaya erişmek için giriş yapmalısınız.");
   window.location.href = "index.html";
 } else {
   // Kullanıcı Bilgileri Güncelleme
